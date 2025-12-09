@@ -49,7 +49,7 @@ import org.postgresql.PGConnection;
  * When using the drivermanager, you need to initialize {@link DriverWrapper} instead of (or in addition to)
  * {@link org.postgresql.Driver}. When using a J2EE DataSource implementation, set the driver class property in the
  * datasource config, the following works for jboss: <code>
- * &lt;driver-class&gt;io.github.sebasbaumh.postgis.DriverWrapper&lt;/driver-class&gt;
+ * &lt;driver-class&gt;de.mum.postgis.DriverWrapper&lt;/driver-class&gt;
  * </code>
  * <p>
  * If you don't like or want to use the {@link DriverWrapper}, you can just call {@link #registerDataTypes(Connection)}
@@ -64,7 +64,7 @@ import org.postgresql.PGConnection;
 @NonNullByDefault({ DefaultLocation.PARAMETER, DefaultLocation.RETURN_TYPE })
 public class DriverWrapper extends Driver
 {
-	private static final Logger logger = Logger.getLogger("io.github.sebasbaumh.postgis.DriverWrapper");
+	private static final Logger logger = Logger.getLogger("de.mum.postgis.DriverWrapper");
 	/**
 	 * PostGIS custom JDBC protocol.
 	 */

@@ -146,7 +146,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getCoordinates()
+	 * @see de.mum.postgis.Geometry#getCoordinates()
 	 */
 	@Override
 	public Iterable<Point> getCoordinates()
@@ -156,7 +156,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeometry#getEndPoint()
+	 * @see de.mum.postgis.LineBasedGeometry#getEndPoint()
 	 */
 	@Nullable
 	@Override
@@ -167,7 +167,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getNumberOfCoordinates()
+	 * @see de.mum.postgis.Geometry#getNumberOfCoordinates()
 	 */
 	@Override
 	public int getNumberOfCoordinates()
@@ -177,7 +177,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeometry#getStartPoint()
+	 * @see de.mum.postgis.LineBasedGeometry#getStartPoint()
 	 */
 	@Nullable
 	@Override
@@ -194,7 +194,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#hasMeasure()
+	 * @see de.mum.postgis.Geometry#hasMeasure()
 	 */
 	@Override
 	public boolean hasMeasure()
@@ -211,7 +211,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#is3d()
+	 * @see de.mum.postgis.Geometry#is3d()
 	 */
 	@Override
 	public boolean is3d()
@@ -228,7 +228,7 @@ public class LineString extends Curve implements Iterable<Point>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#isEmpty()
+	 * @see de.mum.postgis.Geometry#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty()

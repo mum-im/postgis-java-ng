@@ -136,7 +136,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getCoordinates()
+	 * @see de.mum.postgis.Geometry#getCoordinates()
 	 */
 	@Override
 	public Iterable<Point> getCoordinates()
@@ -154,7 +154,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeometry#getEndPoint()
+	 * @see de.mum.postgis.LineBasedGeometry#getEndPoint()
 	 */
 	@Nullable
 	@Override
@@ -179,7 +179,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getNumberOfCoordinates()
+	 * @see de.mum.postgis.Geometry#getNumberOfCoordinates()
 	 */
 	@Override
 	public int getNumberOfCoordinates()
@@ -194,7 +194,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeometry#getStartPoint()
+	 * @see de.mum.postgis.LineBasedGeometry#getStartPoint()
 	 */
 	@Nullable
 	@Override
@@ -216,7 +216,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#hasMeasure()
+	 * @see de.mum.postgis.Geometry#hasMeasure()
 	 */
 	@Override
 	public boolean hasMeasure()
@@ -233,7 +233,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#is3d()
+	 * @see de.mum.postgis.Geometry#is3d()
 	 */
 	@Override
 	public boolean is3d()
@@ -270,7 +270,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeom#length()
+	 * @see de.mum.postgis.LineBasedGeom#length()
 	 */
 	@Override
 	public double length()
@@ -285,7 +285,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Curve#reverse()
+	 * @see de.mum.postgis.postgis.Curve#reverse()
 	 */
 	@Override
 	public void reverse()

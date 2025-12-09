@@ -58,7 +58,7 @@ public abstract class Curve extends Geometry implements LineBasedGeometry
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeometry#isClosed()
+	 * @see de.mum.postgis.LineBasedGeometry#isClosed()
 	 */
 	@Override
 	public boolean isClosed()

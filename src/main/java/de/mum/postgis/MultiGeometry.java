@@ -111,7 +111,7 @@ public abstract class MultiGeometry<T extends Geometry> extends Geometry impleme
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getCoordinates()
+	 * @see de.mum.postgis.Geometry#getCoordinates()
 	 */
 	@Override
 	public Iterable<Point> getCoordinates()
@@ -138,7 +138,7 @@ public abstract class MultiGeometry<T extends Geometry> extends Geometry impleme
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#getNumberOfCoordinates()
+	 * @see de.mum.postgis.Geometry#getNumberOfCoordinates()
 	 */
 	@Override
 	public int getNumberOfCoordinates()
@@ -159,7 +159,7 @@ public abstract class MultiGeometry<T extends Geometry> extends Geometry impleme
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#hasMeasure()
+	 * @see de.mum.postgis.Geometry#hasMeasure()
 	 */
 	@Override
 	public boolean hasMeasure()
@@ -176,7 +176,7 @@ public abstract class MultiGeometry<T extends Geometry> extends Geometry impleme
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.Geometry#is3d()
+	 * @see de.mum.postgis.Geometry#is3d()
 	 */
 	@Override
 	public boolean is3d()

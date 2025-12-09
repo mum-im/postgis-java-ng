@@ -63,7 +63,7 @@ public class CircularString extends LineString
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.LineBasedGeom#length()
+	 * @see de.mum.postgis.LineBasedGeom#length()
 	 */
 	@Override
 	public double length()
