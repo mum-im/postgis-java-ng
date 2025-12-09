@@ -20,36 +20,41 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * The MULTISURFACE is a collection of surfaces, which can be (linear) polygons or curve polygons.
+ * @author Sebastian Baumhekel
+ */
+@NonNullByDefault
+public class MultiSurface extends MultiGeometry<PolygonBase<?>>
 {
+	private static final long serialVersionUID = 0x100;
+	/**
+	 * The OGIS geometry type number for multi surfaces, which can be (linear) polygons or curve polygons.
+	 */
+	public static final int TYPE = 12;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public MultiSurface()
 	{
-		if (!hasDatabase())
+		super(TYPE);
+	}
+
+	/**
+	 * Constructs an instance.
+	 * @param lines lines
+	 */
+	public <T extends PolygonBase<?>> MultiSurface(Iterable<T> lines)
+	{
+		super(TYPE);
+		for (T geom : lines)
 		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
+			add(geom);
 		}
 	}
 

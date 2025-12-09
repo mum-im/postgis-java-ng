@@ -28,6 +28,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.postgresql.util.PGobject;
 
+import de.mum.postgis.PGbox2d;
+import de.mum.postgis.PGbox3d;
+import de.mum.postgis.Point;
+
 @SuppressWarnings({ "javadoc", "static-method" })
 public class BoxesTest
 {

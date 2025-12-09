@@ -20,37 +20,56 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.postgresql.util.PGobject;
 
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * Geometry class for geographic geometries.
+ * @author Sebastian Baumhekel
+ */
+public class PGgeography extends PGgeometrybase
 {
+	/**
+	 * Type of the {@link PGobject}.
+	 */
+	private static final String PG_TYPE = "geography";
+	/* JDK 1.5 Serialization */
+	private static final long serialVersionUID = 0x100;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public PGgeography()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		super(PG_TYPE);
+	}
+
+	/**
+	 * Constructs an instance.
+	 * @param geom {@link Geometry}
+	 */
+	public PGgeography(Geometry geom)
+	{
+		super(PG_TYPE, geom);
+	}
+
+	/**
+	 * Constructs an instance.
+	 * @param value geometry
+	 * @throws SQLException
+	 */
+	public PGgeography(String value) throws SQLException
+	{
+		super(PG_TYPE, value);
+	}
+
+	@Override
+	public PGgeography clone() throws CloneNotSupportedException
+	{
+		return (PGgeography) super.clone();
 	}
 
 }

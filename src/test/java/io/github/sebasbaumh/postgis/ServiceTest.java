@@ -29,6 +29,8 @@ import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.mum.postgis.DriverWrapper;
+
 /**
  * Tests to ensure that the drivers that are registered as services in META-INF/services/java.sql.Driver are resolved
  * correctly. Ported from postgis-java.

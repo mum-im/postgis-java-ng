@@ -20,37 +20,40 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import javax.annotation.Nullable;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * Interface to mark line based geometries.
+ * @author Sebastian Baumhekel
+ */
+public interface LineBasedGeometry
 {
+	/**
+	 * Gets the end point.
+	 * @return {@link Point} on success, else null
+	 */
+	@Nullable
+	Point getEndPoint();
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
-	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
-	}
+	/**
+	 * Gets the start point.
+	 * @return {@link Point} on success, else null
+	 */
+	@Nullable
+	Point getStartPoint();
+
+	/**
+	 * Checks if this line is closed, so the last coordinate is the same as the first coordinate.
+	 * @return true on success, else false
+	 */
+	boolean isClosed();
+
+	/**
+	 * Gets the length of this line.
+	 * @return length
+	 */
+	double length();
 
 }

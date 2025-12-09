@@ -27,8 +27,9 @@ import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import io.github.sebasbaumh.postgis.binary.BinaryParser;
-import io.github.sebasbaumh.postgis.binary.BinaryWriter;
+import de.mum.postgis.Geometry;
+import de.mum.postgis.binary.BinaryParser;
+import de.mum.postgis.binary.BinaryWriter;
 
 /**
  * @author Sebastian Baumhekel

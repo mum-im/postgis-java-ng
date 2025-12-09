@@ -20,37 +20,38 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * Geometry Collection.
+ * @author markus.schaber@logix-tt.com
+ */
+@NonNullByDefault
+public class GeometryCollection extends MultiGeometry<Geometry>
 {
+	/* JDK 1.5 Serialization */
+	private static final long serialVersionUID = 0x100;
+	/**
+	 * The OGIS geometry type number for feature collections.
+	 */
+	public static final int TYPE = 7;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public GeometryCollection()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		super(TYPE);
 	}
 
+	/**
+	 * Constructs an instance.
+	 * @param geoms geometries
+	 */
+	public GeometryCollection(Iterable<Geometry> geoms)
+	{
+		super(TYPE, geoms);
+	}
 }

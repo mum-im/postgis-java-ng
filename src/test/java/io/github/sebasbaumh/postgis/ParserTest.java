@@ -34,8 +34,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.sebasbaumh.postgis.binary.BinaryParser;
-import io.github.sebasbaumh.postgis.binary.BinaryWriter;
+import de.mum.postgis.Geometry;
+import de.mum.postgis.PGgeometry;
+import de.mum.postgis.PostGisUtil;
+import de.mum.postgis.binary.BinaryParser;
+import de.mum.postgis.binary.BinaryWriter;
 
 @SuppressWarnings("javadoc")
 public class ParserTest extends DatabaseTestBase

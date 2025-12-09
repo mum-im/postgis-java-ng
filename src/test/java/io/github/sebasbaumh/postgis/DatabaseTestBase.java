@@ -42,6 +42,10 @@ import com.mchange.v2.c3p0.PooledDataSource;
 import com.mchange.v2.log.MLevel;
 import com.mchange.v2.log.MLog;
 
+import de.mum.postgis.Geometry;
+import de.mum.postgis.PGgeography;
+import de.mum.postgis.PGgeometry;
+
 /**
  * A base class for tests relying on a database connection to a PostGIS database.
  * @author Sebastian Baumhekel

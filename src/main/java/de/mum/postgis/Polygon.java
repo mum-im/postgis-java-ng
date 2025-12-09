@@ -20,37 +20,47 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * A polygon.
+ * @author Sebastian Baumhekel
+ */
+@NonNullByDefault
+public class Polygon extends PolygonBase<LinearRing>
 {
+	private static final long serialVersionUID = 0x100;
+	/**
+	 * The OGIS geometry type number for polygons.
+	 */
+	public static final int TYPE = 3;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public Polygon()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		super(TYPE, LinearRing.class);
+	}
+
+	/**
+	 * Constructs an instance with the given rings.
+	 * @param rings rings (first one will be the outer ring)
+	 */
+	public Polygon(Iterable<LinearRing> rings)
+	{
+		super(TYPE, LinearRing.class, rings);
+	}
+
+	/**
+	 * Constructs an instance.
+	 * @param lsOuterRing outer ring
+	 */
+	public Polygon(LinearRing lsOuterRing)
+	{
+		super(TYPE, lsOuterRing);
 	}
 
 }

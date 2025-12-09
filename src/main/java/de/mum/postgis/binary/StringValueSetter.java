@@ -20,37 +20,39 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis.binary;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import de.mum.postgis.PostGisUtil;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * Allows writing values as a string in little endian encoding and hex format.
+ * @author Sebastian Baumhekel
+ */
+public class StringValueSetter extends ValueSetter
 {
+	private final StringBuilder sb = new StringBuilder();
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public StringValueSetter()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+	}
+
+	/**
+	 * Gets the written value.
+	 * @return value
+	 */
+	public String getValue()
+	{
+		return sb.toString();
+	}
+
+	@Override
+	public void setByte(byte b)
+	{
+		sb.append(PostGisUtil.HEX_CHAR[(b >> 4) & 0xF]);
+		sb.append(PostGisUtil.HEX_CHAR[b & 0xF]);
 	}
 
 }

@@ -33,6 +33,8 @@ import javax.sql.DataSource;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.mum.postgis.DriverWrapper;
+
 /**
  * Test PostGIS connection.
  * @author Sebastian Baumhekel

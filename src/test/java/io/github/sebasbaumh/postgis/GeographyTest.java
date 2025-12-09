@@ -26,6 +26,14 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
+import de.mum.postgis.Geometry;
+import de.mum.postgis.LineString;
+import de.mum.postgis.MultiLineString;
+import de.mum.postgis.MultiPolygon;
+import de.mum.postgis.PGgeometry;
+import de.mum.postgis.Point;
+import de.mum.postgis.Polygon;
+
 /**
  * Test geometries of geography type.
  * @author Sebastian Baumhekel

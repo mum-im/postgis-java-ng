@@ -20,37 +20,38 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * A multi point.
+ * @author Sebastian Baumhekel
+ */
+@NonNullByDefault
+public class MultiPoint extends MultiGeometry<Point>
 {
+	/* JDK 1.5 Serialization */
+	private static final long serialVersionUID = 0x100;
+	/**
+	 * The OGIS geometry type number for aggregate points.
+	 */
+	public static final int TYPE = 4;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public MultiPoint()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		super(TYPE);
 	}
 
+	/**
+	 * Constructs an instance.
+	 * @param points points
+	 */
+	public MultiPoint(Iterable<Point> points)
+	{
+		super(TYPE, points);
+	}
 }

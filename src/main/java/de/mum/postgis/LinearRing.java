@@ -20,37 +20,36 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * This represents the LinearRing GIS datatype. This type is used to construct the polygon types, but is not stored or
+ * retrieved directly from the database.
+ */
+@NonNullByDefault
+public class LinearRing extends LineString
 {
+	private static final long serialVersionUID = 0x100;
+	// Fake type for linear ring
+	private static final int TYPE = 0;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 */
+	public LinearRing()
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		super(LinearRing.TYPE);
+	}
+
+	/**
+	 * Constructs an instance.
+	 * @param points points
+	 */
+	public LinearRing(Iterable<Point> points)
+	{
+		super(LinearRing.TYPE, points);
 	}
 
 }

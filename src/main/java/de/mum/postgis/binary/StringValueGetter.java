@@ -20,37 +20,36 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis.binary;
 
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectOutputStream;
+import de.mum.postgis.PostGisUtil;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import de.mum.postgis.PGgeometry;
-
-@SuppressWarnings("javadoc")
-public class SerializationTest extends DatabaseTestBase
+/**
+ * Allows reading values from a string.
+ * @author Sebastian Baumhekel
+ */
+public class StringValueGetter extends ValueGetter
 {
+	private int position;
+	private final String value;
 
-	@Test
-	public void serializationCheckPGgeometry() throws Exception
+	/**
+	 * Constructs an instance.
+	 * @param value value as hex string
+	 */
+	public StringValueGetter(String value)
 	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		try
-		{
-			new ObjectOutputStream(new ByteArrayOutputStream())
-					.writeObject(new PGgeometry(getWKBFromWKT("MULTIPOLYGON(((1 1,1 2,2 1,1 1)))")));
-		}
-		catch (NotSerializableException ex)
-		{
-			Assert.fail("serialization of PGgeometry failed: " + ex);
-		}
+		this.value = value;
+	}
+
+	@Override
+	protected int getNextByte()
+	{
+		// get current position (and respect that every byte consists of 2 hex characters)
+		int index = position * 2;
+		// then advance the position to the next byte
+		position++;
+		return ((PostGisUtil.toHexByte(value.charAt(index)) << 4) | PostGisUtil.toHexByte(value.charAt(index + 1)));
 	}
 
 }

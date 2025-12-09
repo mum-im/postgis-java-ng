@@ -28,6 +28,15 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.mum.postgis.CircularString;
+import de.mum.postgis.Geometry;
+import de.mum.postgis.LineString;
+import de.mum.postgis.MultiLineString;
+import de.mum.postgis.MultiPolygon;
+import de.mum.postgis.PGgeometry;
+import de.mum.postgis.Point;
+import de.mum.postgis.Polygon;
+
 @SuppressWarnings("javadoc")
 public class DatatypesTest extends DatabaseTestBase
 {
