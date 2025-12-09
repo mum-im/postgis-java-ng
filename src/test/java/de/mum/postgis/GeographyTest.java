@@ -20,15 +20,12 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
 import java.sql.SQLException;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import de.mum.postgis.CircularString;
 import de.mum.postgis.Geometry;
 import de.mum.postgis.LineString;
 import de.mum.postgis.MultiLineString;
@@ -37,17 +34,14 @@ import de.mum.postgis.PGgeometry;
 import de.mum.postgis.Point;
 import de.mum.postgis.Polygon;
 
+/**
+ * Test geometries of geography type.
+ * @author Sebastian Baumhekel
+ */
 @SuppressWarnings("javadoc")
-public class DatatypesTest extends DatabaseTestBase
+public class GeographyTest extends PostgisDatabaseTest
 {
-
-	private static final String CR_STR = "CIRCULARSTRING(-9 2,-8 3,-7 2)";
-
-	private static final String CR_STR2 = "CIRCULARSTRING(0 -1,-1 0,0 1,1 0,0 -1)";
-
 	private static final String LNG_STR = "LINESTRING  (10 10 20,20 20 20, 50 50 50, 34 34 34)";
-
-	private static final Logger logger = LoggerFactory.getLogger(DatatypesTest.class);
 
 	private static final String MLNG_STR = "MULTILINESTRING ((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0))";
 
@@ -60,7 +54,7 @@ public class DatatypesTest extends DatabaseTestBase
 	@SuppressWarnings("unchecked")
 	private <T extends Geometry> T assertGeometry(Class<T> clazz, String wkt) throws SQLException
 	{
-		Geometry geom = getGeometryFromWKT(wkt);
+		Geometry geom = getGeographyGeometryFromWKT(wkt);
 		if (clazz.isInstance(geom))
 		{
 			return (T) geom;
@@ -70,42 +64,13 @@ public class DatatypesTest extends DatabaseTestBase
 	}
 
 	@Test
-	public void testCircularString() throws SQLException
-	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		logger.trace("void testCircularString()");
-		logger.debug(CR_STR);
-		CircularString lng = assertGeometry(CircularString.class, CR_STR);
-		logger.debug(lng.toString());
-	}
-
-	@Test
-	public void testCircularString2() throws SQLException
-	{
-		if (!hasDatabase())
-		{
-			return;
-		}
-		logger.trace("void testCircularString2()");
-		logger.debug(CR_STR2);
-		CircularString lng = assertGeometry(CircularString.class, CR_STR2);
-		logger.debug(lng.toString());
-	}
-
-	@Test
 	public void testLineString() throws SQLException
 	{
 		if (!hasDatabase())
 		{
 			return;
 		}
-		logger.trace("void testLineString()");
-		logger.debug(LNG_STR);
-		LineString lng = assertGeometry(LineString.class, LNG_STR);
-		logger.debug(lng.toString());
+		assertGeometry(LineString.class, LNG_STR);
 	}
 
 	@Test
@@ -115,10 +80,7 @@ public class DatatypesTest extends DatabaseTestBase
 		{
 			return;
 		}
-		logger.trace("void testMultiLineString()");
-		logger.debug(MLNG_STR);
-		MultiLineString mlng = assertGeometry(MultiLineString.class, MLNG_STR);
-		logger.debug(mlng.toString());
+		assertGeometry(MultiLineString.class, MLNG_STR);
 	}
 
 	@Test
@@ -128,12 +90,11 @@ public class DatatypesTest extends DatabaseTestBase
 		{
 			return;
 		}
-		logger.trace("void testMultiPolygon()");
-		logger.debug(MPLG_STR);
-		MultiPolygon mplg = assertGeometry(MultiPolygon.class, MPLG_STR);
-		logger.debug(mplg.toString());
+		assertGeometry(MultiPolygon.class, MPLG_STR);
 	}
 
+	@SuppressWarnings("unused")
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
 	@Test
 	public void testPGgeometry() throws SQLException
 	{
@@ -141,10 +102,7 @@ public class DatatypesTest extends DatabaseTestBase
 		{
 			return;
 		}
-		logger.trace("void testPGgeometry()");
-		logger.debug(MLNG_STR);
-		PGgeometry pgf = new PGgeometry(getWKBFromWKT(MLNG_STR));
-		logger.debug(pgf.toString());
+		new PGgeometry(getWKBFromWKT(MLNG_STR));
 	}
 
 	@Test
@@ -154,10 +112,7 @@ public class DatatypesTest extends DatabaseTestBase
 		{
 			return;
 		}
-		logger.trace("void testPoint()");
-		logger.debug(PTG_STR);
-		Point ptg = assertGeometry(Point.class, PTG_STR);
-		logger.debug(ptg.toString());
+		assertGeometry(Point.class, PTG_STR);
 	}
 
 	@Test
@@ -167,10 +122,7 @@ public class DatatypesTest extends DatabaseTestBase
 		{
 			return;
 		}
-		logger.trace("void testPolygon()");
-		logger.debug(PLG_STR);
-		Polygon plg = assertGeometry(Polygon.class, PLG_STR);
-		logger.debug(plg.toString());
+		assertGeometry(Polygon.class, PLG_STR);
 	}
 
 }

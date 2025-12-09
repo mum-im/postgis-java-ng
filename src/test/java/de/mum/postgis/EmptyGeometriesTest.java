@@ -20,7 +20,7 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,7 +72,7 @@ public class EmptyGeometriesTest extends DatabaseTestBase
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.DatabaseTest#afterDatabaseSetup()
+	 * @see de.mum.postgis.DatabaseTest#afterDatabaseSetup()
 	 */
 	@Override
 	protected void afterDatabaseSetup() throws SQLException
@@ -83,7 +83,7 @@ public class EmptyGeometriesTest extends DatabaseTestBase
 
 	/*
 	 * (non-Javadoc)
-	 * @see io.github.sebasbaumh.postgis.DatabaseTest#beforeDatabaseShutdown()
+	 * @see de.mum.postgis.DatabaseTest#beforeDatabaseShutdown()
 	 */
 	@Override
 	protected void beforeDatabaseShutdown() throws SQLException

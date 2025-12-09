@@ -20,7 +20,7 @@
  * License along with this library. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.sebasbaumh.postgis;
+package de.mum.postgis;
 
 import java.sql.SQLException;
 
