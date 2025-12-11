@@ -30,26 +30,28 @@ import java.io.ByteArrayOutputStream;
  */
 public class BinaryValueSetter extends ValueSetter
 {
+	/**
+	 * Byte array output stream.
+	 */
 	private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 	/**
 	 * Gets the written value.
+	 * 
 	 * @return value
 	 */
-	public byte[] getValue()
-	{
+	public byte[] getValue() {
 		return out.toByteArray();
 	}
 
 	@Override
-	public void setByte(byte b)
-	{
+	public void setByte(byte b)	{
 		out.write(b);
 	}
 
 	@Override
-	public void setInt(int value)
-	{
+	public void setInt(int value) {
+		
 		out.write((value >>> 0) & 0xFF);
 		out.write((value >>> 8) & 0xFF);
 		out.write((value >>> 16) & 0xFF);
@@ -57,8 +59,8 @@ public class BinaryValueSetter extends ValueSetter
 	}
 
 	@Override
-	public void setLong(long value)
-	{
+	public void setLong(long value)	{
+		
 		out.write((int) ((value >>> 0) & 0xFF));
 		out.write((int) ((value >>> 8) & 0xFF));
 		out.write((int) ((value >>> 16) & 0xFF));

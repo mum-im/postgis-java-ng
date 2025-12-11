@@ -24,7 +24,6 @@ package de.mum.postgis.binary;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import de.mum.postgis.CircularString;
 import de.mum.postgis.CompoundCurve;
 import de.mum.postgis.Curve;
@@ -51,19 +50,19 @@ public final class BinaryWriter
 {
 	// prevent instantiating this class
 	@Deprecated
-	private BinaryWriter()
-	{
+	private BinaryWriter() {
 	}
 
 	/**
 	 * Write a binary encoded geometry. The geometry you put in must be consistent, geom.checkConsistency() must return
 	 * true. If not, the result may be invalid WKB.
+	 * 
 	 * @see Geometry#checkConsistency() the consistency checker
 	 * @param geom the geometry to be written
 	 * @return byte arrray containing the encoded geometry
 	 */
-	public static byte[] writeBinary(Geometry geom)
-	{
+	public static byte[] writeBinary(Geometry geom)	{
+		
 		BinaryValueSetter bytes = new BinaryValueSetter();
 		writeGeometry(geom, bytes);
 		return bytes.getValue();
@@ -71,6 +70,7 @@ public final class BinaryWriter
 
 	/**
 	 * Parse a geometry starting at offset.
+	 * 
 	 * @param geom the geometry to write
 	 * @param dest the value setting to be used for writing
 	 */
@@ -81,22 +81,21 @@ public final class BinaryWriter
 
 		// write typeword
 		int typeword = geom.getType();
-		if (geom.is3d())
-		{
+		if (geom.is3d()) {
 			typeword |= 0x80000000;
 		}
-		if (geom.hasMeasure())
-		{
+		
+		if (geom.hasMeasure()) {
 			typeword |= 0x40000000;
 		}
-		if (geom.getSrid() != Geometry.UNKNOWN_SRID)
-		{
+		
+		if (geom.getSrid() != Geometry.UNKNOWN_SRID)	{
 			typeword |= 0x20000000;
 		}
+		
 		dest.setInt(typeword);
 
-		if (geom.getSrid() != Geometry.UNKNOWN_SRID)
-		{
+		if (geom.getSrid() != Geometry.UNKNOWN_SRID)	{
 			dest.setInt(geom.getSrid());
 		}
 
@@ -146,12 +145,13 @@ public final class BinaryWriter
 	/**
 	 * Write a hex encoded geometry. The geometry you put in must be consistent, geom.checkConsistency() must return
 	 * true. If not, the result may be invalid WKB.
+	 * 
 	 * @see Geometry#checkConsistency() the consistency checker
 	 * @param geom the geometry to be written
 	 * @return String containing the hex encoded geometry
 	 */
-	public static String writeHexed(Geometry geom)
-	{
+	public static String writeHexed(Geometry geom) {
+		
 		StringValueSetter bytes = new StringValueSetter();
 		writeGeometry(geom, bytes);
 		return bytes.getValue();
@@ -165,8 +165,7 @@ public final class BinaryWriter
 	private static <T extends Geometry> void writeMultiGeometry(Collection<T> geoms, ValueSetter dest)
 	{
 		dest.setInt(geoms.size());
-		for (Geometry geom : geoms)
-		{
+		for (Geometry geom : geoms)	{
 			writeGeometry(geom, dest);
 		}
 	}
@@ -182,13 +181,12 @@ public final class BinaryWriter
 		dest.setDouble(geom.getX());
 		dest.setDouble(geom.getY());
 		// write z coordinate?
-		if (geom.is3d())
-		{
+		if (geom.is3d()) {
 			dest.setDouble(geom.getZ());
 		}
+		
 		// write measure?
-		if (geom.hasMeasure())
-		{
+		if (geom.hasMeasure()) {
 			dest.setDouble(geom.getM());
 		}
 	}
@@ -196,6 +194,7 @@ public final class BinaryWriter
 	/**
 	 * Write an Array of "slim" Points (without endianness, srid and type, part of LinearRing and Linestring, but not
 	 * MultiPoint!
+	 * 
 	 * @param geom geometry
 	 * @param dest writer
 	 */
@@ -219,22 +218,21 @@ public final class BinaryWriter
 		// collect all rings (outer ring+inner rings)
 		ArrayList<T> rings = new ArrayList<T>(geom.getNumberOfRings() + 1);
 		rings.add(geom.getOuterRing());
-		for (T ring : geom.getRings())
-		{
+		for (T ring : geom.getRings()) {
 			rings.add(ring);
 		}
+		
 		// write number of rings
 		dest.setInt(rings.size());
+		
 		// then all rings
 		for (T ring : rings)
 		{
 			// polygon linear rings are just written as a plain set of points
-			if (ring instanceof LinearRing lr)
-			{
+			if (ring instanceof LinearRing lr) {
 				writePoints(lr, dest);
 			}
-			else
-			{
+			else {
 				// curve polygons can have different geometries
 				writeGeometry(ring, dest);
 			}
