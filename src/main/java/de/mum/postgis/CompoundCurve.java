@@ -26,9 +26,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-
 import javax.annotation.Nullable;
-
 import org.eclipse.jdt.annotation.NonNullByDefault;
 
 /**
@@ -41,7 +39,12 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 @NonNullByDefault
 public class CompoundCurve extends Curve implements Iterable<LineString>
 {
+	
+	/**
+	 * Serialization id.
+	 */
 	private static final long serialVersionUID = 0x100;
+	
 	/**
 	 * The OGIS geometry type number for single, continuous curves that have both curved (circular) segments and linear
 	 * segments.
@@ -56,49 +59,48 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	/**
 	 * Constructs an instance.
 	 */
-	public CompoundCurve()
-	{
+	public CompoundCurve() {
 		super(TYPE);
 	}
 
 	/**
 	 * Constructs an instance.
+	 * 
 	 * @param geoms geometries
 	 */
-	public CompoundCurve(Iterable<? extends LineString> geoms)
-	{
+	public CompoundCurve(Iterable<? extends LineString> geoms) {
 		super(TYPE);
 		addAll(geoms);
 	}
 
 	/**
 	 * Adds a geometry.
+	 * 
 	 * @param geom geometry
 	 */
-	public void add(LineString geom)
-	{
+	public void add(LineString geom) {
 		subgeoms.add(geom);
 	}
 
 	/**
 	 * Adds all given geometries.
+	 * 
 	 * @param geoms geometries
 	 */
-	public final void addAll(Iterable<? extends LineString> geoms)
-	{
-		for (LineString geom : geoms)
-		{
+	public final void addAll(Iterable<? extends LineString> geoms) {
+		
+		for (LineString geom : geoms) {
 			subgeoms.add(geom);
 		}
 	}
 
 	@Override
-	public boolean checkConsistency()
-	{
-		if (!super.checkConsistency() || subgeoms.isEmpty())
-		{
+	public boolean checkConsistency() {
+		
+		if (!super.checkConsistency() || subgeoms.isEmpty()) {
 			return false;
 		}
+		
 		return PostGisUtil.checkConsistency(subgeoms);
 	}
 
@@ -131,6 +133,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 		{
 			return PostGisUtil.equalsIterable(this.subgeoms, cother.subgeoms);
 		}
+		
 		return false;
 	}
 
@@ -161,15 +164,16 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	public Point getEndPoint()
 	{
 		LineString ls = PostGisUtil.lastOrDefault(subgeoms);
-		if (ls != null)
-		{
+		if (ls != null)	{
 			return ls.getEndPoint();
 		}
+		
 		return null;
 	}
 
 	/**
 	 * Gets all geometries.
+	 * 
 	 * @return geometries
 	 */
 	public Collection<LineString> getGeometries()
@@ -221,13 +225,13 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	@Override
 	public boolean hasMeasure()
 	{
-		for (LineString geom : subgeoms)
-		{
+		for (LineString geom : subgeoms) {
 			if (geom.hasMeasure())
 			{
 				return true;
 			}
 		}
+		
 		return false;
 	}
 
@@ -245,6 +249,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 				return true;
 			}
 		}
+		
 		return false;
 	}
 
@@ -253,8 +258,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	 * @return true on success, else false
 	 */
 	@Override
-	public boolean isEmpty()
-	{
+	public boolean isEmpty() {
 		return subgeoms.isEmpty();
 	}
 
@@ -263,8 +267,7 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	 * @see java.lang.Iterable#iterator()
 	 */
 	@Override
-	public Iterator<LineString> iterator()
-	{
+	public Iterator<LineString> iterator() {
 		return subgeoms.iterator();
 	}
 
@@ -273,13 +276,13 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	 * @see de.mum.postgis.LineBasedGeom#length()
 	 */
 	@Override
-	public double length()
-	{
+	public double length() {
+		
 		double d = 0;
-		for (LineString ls : subgeoms)
-		{
+		for (LineString ls : subgeoms) {
 			d += ls.length();
 		}
+		
 		return d;
 	}
 
@@ -288,33 +291,32 @@ public class CompoundCurve extends Curve implements Iterable<LineString>
 	 * @see de.mum.postgis.postgis.Curve#reverse()
 	 */
 	@Override
-	public void reverse()
-	{
+	public void reverse() {
+		
 		// reverse linestrings as a whole
 		Collections.reverse(subgeoms);
+		
 		// then reverse all individually
-		for (LineString ls : subgeoms)
-		{
+		for (LineString ls : subgeoms) {
 			ls.reverse();
 		}
 	}
 
 	@Override
-	public void setSrid(int srid)
-	{
+	public void setSrid(int srid) {
+		
 		super.setSrid(srid);
-		for (LineString geom : subgeoms)
-		{
+		for (LineString geom : subgeoms) {
 			geom.setSrid(srid);
 		}
 	}
 
 	/**
 	 * Gets the number of contained geometries.
+	 * 
 	 * @return number of contained geometries
 	 */
-	public int size()
-	{
+	public int size() {
 		return this.subgeoms.size();
 	}
 

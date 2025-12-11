@@ -36,8 +36,10 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 @NonNullByDefault
 public class CircularString extends LineString
 {
-	/* JDK 1.5 Serialization */
+	
+	/** JDK 1.5 Serialization */
 	private static final long serialVersionUID = 0x100;
+	
 	/**
 	 * The OGIS geometry type number for arcs/circles.
 	 */
@@ -46,17 +48,16 @@ public class CircularString extends LineString
 	/**
 	 * Constructs an instance.
 	 */
-	public CircularString()
-	{
+	public CircularString()	{
 		super(TYPE);
 	}
 
 	/**
 	 * Constructs an instance.
+	 * 
 	 * @param points points
 	 */
-	public CircularString(Iterable<Point> points)
-	{
+	public CircularString(Iterable<Point> points) {
 		super(TYPE);
 		addAll(points);
 	}
@@ -66,8 +67,7 @@ public class CircularString extends LineString
 	 * @see de.mum.postgis.LineBasedGeom#length()
 	 */
 	@Override
-	public double length()
-	{
+	public double length() {
 		// FIX: calculate length on arc
 		return super.length();
 	}

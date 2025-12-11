@@ -28,10 +28,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import org.eclipse.jdt.annotation.DefaultLocation;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Owning;
@@ -64,11 +62,16 @@ import org.postgresql.PGConnection;
 @NonNullByDefault({ DefaultLocation.PARAMETER, DefaultLocation.RETURN_TYPE })
 public class DriverWrapper extends Driver
 {
+	/**
+	 * Slf4J logger.
+	 */
 	private static final Logger logger = Logger.getLogger("de.mum.postgis.DriverWrapper");
+	
 	/**
 	 * PostGIS custom JDBC protocol.
 	 */
 	public static final String POSTGIS_PROTOCOL = "jdbc:postgresql_postGIS:";
+	
 	/**
 	 * PostgreSQL JDBC protocol.
 	 */
@@ -93,8 +96,7 @@ public class DriverWrapper extends Driver
 	/**
 	 * Default constructor.
 	 */
-	public DriverWrapper()
-	{
+	public DriverWrapper() {
 	}
 
 	/**

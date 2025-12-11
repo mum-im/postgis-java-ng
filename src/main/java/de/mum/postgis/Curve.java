@@ -31,14 +31,17 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 @NonNullByDefault
 public abstract class Curve extends Geometry implements LineBasedGeometry
 {
+	/**
+	 * Serialization id.
+	 */
 	private static final long serialVersionUID = 0x100;
 
 	/**
 	 * Constructor for subclasses.
+	 * 
 	 * @param type has to be given by all subclasses
 	 */
-	protected Curve(int type)
-	{
+	protected Curve(int type) {
 		super(type);
 	}
 
@@ -51,8 +54,7 @@ public abstract class Curve extends Geometry implements LineBasedGeometry
 	 * Checks if this ring is oriented in clockwise direction.
 	 * @return true on success, else false
 	 */
-	public boolean isClockwise()
-	{
+	public boolean isClockwise() {
 		return isClosed() && (PostGisUtil.calcAreaSigned(getCoordinates()) < 0);
 	}
 
@@ -61,8 +63,8 @@ public abstract class Curve extends Geometry implements LineBasedGeometry
 	 * @see de.mum.postgis.LineBasedGeometry#isClosed()
 	 */
 	@Override
-	public boolean isClosed()
-	{
+	public boolean isClosed() {
+		
 		Point pFirst = getStartPoint();
 		Point pLast = getEndPoint();
 		return (pFirst != null) && (pLast != null) && pFirst.coordsAreEqual(pLast);
@@ -78,8 +80,7 @@ public abstract class Curve extends Geometry implements LineBasedGeometry
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return this.getClass().getSimpleName() + " [" + this.getNumberOfCoordinates() + " points]";
 	}
 

@@ -30,27 +30,29 @@ import de.mum.postgis.PostGisUtil;
  */
 public class StringValueSetter extends ValueSetter
 {
+	/**
+	 * String builder.
+	 */
 	private final StringBuilder sb = new StringBuilder();
 
 	/**
 	 * Constructs an instance.
 	 */
-	public StringValueSetter()
-	{
+	public StringValueSetter() {
 	}
 
 	/**
 	 * Gets the written value.
+	 * 
 	 * @return value
 	 */
-	public String getValue()
-	{
+	public String getValue() {
 		return sb.toString();
 	}
 
 	@Override
-	public void setByte(byte b)
-	{
+	public void setByte(byte b)	{
+		
 		sb.append(PostGisUtil.HEX_CHAR[(b >> 4) & 0xF]);
 		sb.append(PostGisUtil.HEX_CHAR[b & 0xF]);
 	}

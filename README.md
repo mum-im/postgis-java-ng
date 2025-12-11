@@ -1,14 +1,14 @@
 # PostGIS Java bindings (Next Generation) #
 
-[![CodeQL](https://github.com/sebasbaumh/postgis-java-ng/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sebasbaumh/postgis-java-ng/actions/workflows/codeql-analysis.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.sebasbaumh/postgis-java-ng)](https://search.maven.org/artifact/io.github.sebasbaumh/postgis-java-ng)
-[![javadoc](https://javadoc.io/badge2/io.github.sebasbaumh/postgis-java-ng/javadoc.svg)](https://javadoc.io/doc/io.github.sebasbaumh/postgis-java-ng/latest/index.html)
-[![License](https://img.shields.io/github/license/sebasbaumh/postgis-java-ng.svg)](https://github.com/sebasbaumh/postgis-java-ng/blob/master/LICENSE)
+[![CodeQL](https://github.com/mum-im/postgis-java-ng/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mum-im/postgis-java-ng/actions/workflows/codeql-analysis.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/de.mum/postgis-java-ng)](https://search.maven.org/artifact/de.mum/postgis-java-ng)
+[![javadoc](https://javadoc.io/badge2/de.mum/postgis-java-ng/javadoc.svg)](https://javadoc.io/doc/de.mum/postgis-java-ng/latest/index.html)
+[![License](https://img.shields.io/github/license/mum/postgis-java-ng.svg)](https://github.com/mum-im/postgis-java-ng/blob/master/LICENSE)
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sebasbaumh_postgis-java-ng&metric=ncloc)](https://sonarcloud.io/dashboard?id=sebasbaumh_postgis-java-ng)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sebasbaumh_postgis-java-ng&metric=security_rating)](https://sonarcloud.io/dashboard?id=sebasbaumh_postgis-java-ng)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebasbaumh_postgis-java-ng&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=sebasbaumh_postgis-java-ng)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebasbaumh_postgis-java-ng&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sebasbaumh_postgis-java-ng)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=ncloc)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=security_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
 
 This project contains Java bindings for using [PostGIS](https://postgis.net/) geometries coming from a [PostgreSQL](https://www.postgresql.org/) database.  
 *It is originally based on [postgis-java](https://github.com/postgis/postgis-java) and I want to thank its authors for their work.*
@@ -26,13 +26,13 @@ This project contains Java bindings for using [PostGIS](https://postgis.net/) ge
   * Recommended are PostgreSQL 15.1 and PostGIS 3.2.2
   * Supported are versions starting from PostgreSQL 9.6 and PostGIS 2.3
 * Support for current JDKs
-  * JDK 21 ([main branch](https://github.com/sebasbaumh/postgis-java-ng/tree/master))
+  * JDK 21 ([main branch](https://github.com/mum-im/postgis-java-ng/tree/master))
   * deprecated branches
-    * [JDK 17](https://github.com/sebasbaumh/postgis-java-ng/tree/jdk17)
-    * [JDK 11](https://github.com/sebasbaumh/postgis-java-ng/tree/jdk11)
-    * [JDK 8](https://github.com/sebasbaumh/postgis-java-ng/tree/jdk8)
-* The [license](https://github.com/sebasbaumh/postgis-java-ng/blob/master/LICENSE) is still LGPL
-* The authors are listed [here](https://github.com/sebasbaumh/postgis-java-ng/blob/master/AUTHORS)
+    * [JDK 17](https://github.com/mum-im/postgis-java-ng/tree/jdk17)
+    * [JDK 11](https://github.com/mum-im/postgis-java-ng/tree/jdk11)
+    * [JDK 8](https://github.com/mum-im/postgis-java-ng/tree/jdk8)
+* The [license](https://github.com/mum-im/postgis-java-ng/blob/master/LICENSE) is still LGPL
+* The authors are listed [here](https://github.com/mum-im/postgis-java-ng/blob/master/AUTHORS)
 
 **Supported [geometry types](https://postgis.net/docs/using_postgis_dbmanagement.html#RefObject):**
 * `Point`
@@ -55,15 +55,15 @@ There is a Maven artifact in the official Maven repository, so just add this to 
 
 ```xml
 <dependency>
-	<groupId>io.github.sebasbaumh</groupId>
+	<groupId>de.mum</groupId>
 	<artifactId>postgis-java-ng</artifactId>
-	<version>25.1.1</version>
+	<version>25.2.0</version>
 </dependency>
 ```
 
-The version reflects the year of the release, e.g. `25.1.1` is a version released in 2024.
+The version reflects the year of the release, e.g. `25.2.0` is a version released in 2025.
 
-The API differs a bit from [postgis-java](https://github.com/postgis/postgis-java) with the main point being a different namespace (`io.github.sebasbaumh.postgis`) as publishing a project to Maven Central requires to own that namespace.
+The API differs a bit from [postgis-java](https://github.com/postgis/postgis-java) with the main point being a different namespace (`de.mum.postgis`) as publishing a project to Maven Central requires to own that namespace.
 In addition the class structure is a bit different (see below) to support arc geometries and reduce boilerplate code, but you should be able to adapt to it easily.
 The implementations of the parser and writer for the geometries have been heavily reworked to speed up processing and reduce complexity.
 

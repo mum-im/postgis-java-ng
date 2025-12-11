@@ -32,8 +32,12 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 @NonNullByDefault
 public class CurvePolygon extends PolygonBase<Curve>
 {
-	/* JDK 1.5 Serialization */
+	
+	/** 
+	 * JDK 1.5 Serialization 
+	 */
 	private static final long serialVersionUID = 0x100;
+	
 	/**
 	 * The OGIS geometry type number for polygons with curved segments.
 	 */
@@ -42,26 +46,25 @@ public class CurvePolygon extends PolygonBase<Curve>
 	/**
 	 * Constructs an instance.
 	 */
-	public CurvePolygon()
-	{
+	public CurvePolygon() {
 		super(TYPE, LineString.class);
 	}
 
 	/**
 	 * Constructs an instance.
+	 * 
 	 * @param lsOuterRing outer ring
 	 */
-	public CurvePolygon(Curve lsOuterRing)
-	{
+	public CurvePolygon(Curve lsOuterRing) {
 		super(TYPE, lsOuterRing);
 	}
 
 	/**
 	 * Constructs an instance.
+	 * 
 	 * @param rings rings (first one will be the outer ring)
 	 */
-	public CurvePolygon(Iterable<? extends Curve> rings)
-	{
+	public CurvePolygon(Iterable<? extends Curve> rings) {
 		super(TYPE, LineString.class, rings);
 	}
 

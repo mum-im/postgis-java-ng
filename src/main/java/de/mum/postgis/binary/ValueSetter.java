@@ -32,31 +32,32 @@ public abstract class ValueSetter
 	/**
 	 * Constructs an instance.
 	 */
-	public ValueSetter()
-	{
+	public ValueSetter() {
 	}
 
 	/**
-	 * Sets a byte.
+	 * Sets the given byte.
+	 * 
 	 * @param b byte value to set with
 	 */
 	public abstract void setByte(byte b);
 
 	/**
-	 * Writes a double.
+	 * Sets the given double.
+	 * 
 	 * @param data double value to be set with
 	 */
-	public void setDouble(double data)
-	{
+	public void setDouble(double data) {
 		setLong(Double.doubleToLongBits(data));
 	}
 
 	/**
-	 * Sets a 32-Bit integer
+	 * Sets the given 32-Bit integer.
+	 * 
 	 * @param value int value to be set with
 	 */
-	public void setInt(int value)
-	{
+	public void setInt(int value) {
+		
 		setByte((byte) value);
 		setByte((byte) (value >> 8));
 		setByte((byte) (value >> 16));
@@ -65,10 +66,11 @@ public abstract class ValueSetter
 
 	/**
 	 * Sets a long value. This is not needed directly, but as a nice side-effect from setDouble.
-	 * @param value value value to be set with
+	 * 
+	 * @param value long value to be set with
 	 */
-	public void setLong(long value)
-	{
+	public void setLong(long value)	{
+		
 		setByte((byte) value);
 		setByte((byte) (value >> 8));
 		setByte((byte) (value >> 16));
