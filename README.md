@@ -1,14 +1,9 @@
 # PostGIS Java bindings (Next Generation) #
 
-[![CodeQL](https://github.com/mum-im/postgis-java-ng/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mum-im/postgis-java-ng/actions/workflows/codeql-analysis.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/de.mum/postgis-java-ng)](https://search.maven.org/artifact/de.mum/postgis-java-ng)
 [![javadoc](https://javadoc.io/badge2/de.mum/postgis-java-ng/javadoc.svg)](https://javadoc.io/doc/de.mum/postgis-java-ng/latest/index.html)
 [![License](https://img.shields.io/github/license/mum/postgis-java-ng.svg)](https://github.com/mum-im/postgis-java-ng/blob/master/LICENSE)
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=ncloc)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=security_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mum-im_postgis-java-ng&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mum-im_postgis-java-ng)
 
 This project contains Java bindings for using [PostGIS](https://postgis.net/) geometries coming from a [PostgreSQL](https://www.postgresql.org/) database.  
 *It is originally based on [postgis-java](https://github.com/postgis/postgis-java) and I want to thank its authors for their work.*
@@ -26,9 +21,8 @@ This project contains Java bindings for using [PostGIS](https://postgis.net/) ge
   * Recommended are PostgreSQL 15.1 and PostGIS 3.2.2
   * Supported are versions starting from PostgreSQL 9.6 and PostGIS 2.3
 * Support for current JDKs
-  * JDK 21 ([main branch](https://github.com/mum-im/postgis-java-ng/tree/master))
+  * JDK 17 ([main branch](https://github.com/mum-im/postgis-java-ng/tree/master))
   * deprecated branches
-    * [JDK 17](https://github.com/mum-im/postgis-java-ng/tree/jdk17)
     * [JDK 11](https://github.com/mum-im/postgis-java-ng/tree/jdk11)
     * [JDK 8](https://github.com/mum-im/postgis-java-ng/tree/jdk8)
 * The [license](https://github.com/mum-im/postgis-java-ng/blob/master/LICENSE) is still LGPL
