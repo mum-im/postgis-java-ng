@@ -4,7 +4,7 @@
 	<groupId>de.mum</groupId>
 	<artifactId>postgis-java-ng</artifactId>
 	<!-- version for release -->
-	<version>25.1.2-SNAPSHOT</version>
+	<version>25.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>PostGIS Java bindings</name>
@@ -20,8 +20,8 @@
 
 	<developers>
 		<developer>
-			<name>Sebastian Baumhekel</name>
-			<email>sebastian.baumhekel@gmail.com</email>
+			<name>Mensch und Maschine Infrastruktur</name>
+			<email>development.mapedit@mum.de</email>
 			<url>https://github.com/mum-im</url>
 		</developer>
 	</developers>
@@ -30,7 +30,7 @@
 		<connection>scm:git:git://github.com/mum-im/postgis-java-ng.git</connection>
 		<developerConnection>scm:git:ssh://github.com:mum-im/postgis-java-ng.git</developerConnection>
 		<url>https://github.com/mum-im/postgis-java-ng/tree/master</url>
-		<tag>v25.1.0</tag>
+		<tag>25.2.0</tag>
 	</scm>
 	<!-- Sonatype repository -->
 	<distributionManagement>
