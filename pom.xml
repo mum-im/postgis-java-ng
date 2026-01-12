@@ -4,7 +4,7 @@
 	<groupId>de.mum</groupId>
 	<artifactId>postgis-java-ng</artifactId>
 	<!-- version for release -->
-	<version>25.2.0</version>
+	<version>26.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>PostGIS Java bindings</name>
@@ -30,7 +30,7 @@
 		<connection>scm:git:git://github.com/mum-im/postgis-java-ng.git</connection>
 		<developerConnection>scm:git:ssh://github.com:mum-im/postgis-java-ng.git</developerConnection>
 		<url>https://github.com/mum-im/postgis-java-ng/tree/master</url>
-		<tag>25.2.0</tag>
+		<tag>26.1.0</tag>
 	</scm>
 	<!-- Sonatype repository -->
 	<distributionManagement>

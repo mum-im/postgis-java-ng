@@ -51,7 +51,7 @@ There is a Maven artifact in the official Maven repository, so just add this to 
 <dependency>
 	<groupId>de.mum</groupId>
 	<artifactId>postgis-java-ng</artifactId>
-	<version>25.2.0</version>
+	<version>26.1.0</version>
 </dependency>
 ```
 
